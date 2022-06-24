@@ -1,3 +1,4 @@
+-- DROP FOREIGN KEY
 ALTER TABLE `products`
 DROP FOREIGN KEY `FK_AuthorProducts`,
 DROP FOREIGN key `FK_LanguageProducts`,
@@ -16,6 +17,7 @@ DROP FOREIGN KEY `FK_PositionStaff`;
 
 ALTER TABLE `sales`
 DROP FOREIGN KEY `FK_SalesTypeSales`,
+DROP FOREIGN KEY `FK_VaucerTypeSales`,
 DROP FOREIGN KEY `FK_BookstoreSales`;
 
 ALTER TABLE `deliveries`
@@ -29,11 +31,18 @@ DROP FOREIGN KEY `FK_ProvidersShopping`;
 -- DROP TABLES
 DROP TABLE `authors`;
 DROP TABLE `languages`;
-DROP TABLE `products`;
-DROP TABLE `bookstore_staff`;
 DROP TABLE `editorial`;
-DROP TABLE `positions`;
-DROP TABLE `address`;
+DROP TABLE `products`;
 DROP TABLE `region`;
 DROP TABLE `country`;
+DROP TABLE `address`;
 DROP TABLE `bookstores`;
+DROP TABLE `positions`;
+DROP TABLE `bookstore_staff`;
+DROP TABLE `sale_types`;
+DROP TABLE `sales`;
+DROP TABLE `deliveries`;
+DROP TABLE `providers`;
+DROP TABLE `shopping`;
+DROP TABLE `vaucher_types`;
+DROP TABLE `payment_types`;

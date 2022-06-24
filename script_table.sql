@@ -83,18 +83,34 @@ CREATE TABLE `bookstore_staff` (
 
 CREATE TABLE `sale_types` (
   `id_sale_type` INT NOT NULL AUTO_INCREMENT,
-  `type_sale` VARCHAR(20),
+  `sale_type` VARCHAR(20),
   PRIMARY KEY (`id_sale_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `payment_types` (
+  `id_payment_type` INT NOT NULL AUTO_INCREMENT,
+  `payment_type` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`id_payment_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `vaucher_types` (
+  `id_vaucher_type` INT NOT NULL AUTO_INCREMENT,
+  `vaucher_type` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`id_vaucher_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `sales` (
   `id_sale` INT NOT NULL AUTO_INCREMENT,
   `id_sale_type` INT,
+  `id_payment_type` INT,
+  `id_vaucher_type` INT,
   `full_sale_price` INT NOT NULL,
   `datetime_sale` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_bookstore` INT,
   PRIMARY KEY (`id_sale`),
   CONSTRAINT FK_SalesTypeSales FOREIGN KEY (`id_sale_type`) REFERENCES sale_types(`id_sale_type`),
+  CONSTRAINT FK_PaymentTypeSales FOREIGN KEY (`id_payment_type`) REFERENCES payment_types(`id_payment_type`),
+  CONSTRAINT FK_VaucerTypeSales FOREIGN KEY (`id_vaucher_type`) REFERENCES vaucher_types(`id_vaucher_type`),
   CONSTRAINT FK_BookstoreSales FOREIGN KEY (`id_bookstore`) REFERENCES bookstores(`id_bookstore`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
