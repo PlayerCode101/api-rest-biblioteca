@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    hostname: mysql
+    restart: always
+    ports:
+      - 23306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "carlos"
+      MYSQL_DATABASE: "biblioteca_db"
+      MYSQL_USER: "userbd"
+      MYSQL_PASSWORD: "passuser"
+    volumes:
+      - ./volumes/data:/var/lib/mysql:rw
+    networks:
+      - mysql
+
+networks:
+  mysql:
+    name: api_rest
+    driver: bridge
